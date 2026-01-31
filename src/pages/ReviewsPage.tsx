@@ -22,7 +22,7 @@ export default function ReviewsPage() {
       key: 'title',
       header: 'PS Title',
       render: (ps: typeof problemStatements[0]) => (
-        <div className="max-w-xs">
+        <div className="min-w-[150px]">
           <p className="text-xs text-muted-foreground">{ps.id}</p>
           <p className="font-medium text-foreground truncate">{ps.title}</p>
         </div>
@@ -31,6 +31,7 @@ export default function ReviewsPage() {
     {
       key: 'category',
       header: 'Category / Theme',
+      hideOnMobile: true,
       render: (ps: typeof problemStatements[0]) => (
         <div>
           <p className="font-medium text-foreground">{ps.category}</p>
@@ -41,10 +42,12 @@ export default function ReviewsPage() {
     {
       key: 'lastUpdated',
       header: 'Last Submission',
+      hideOnMobile: true,
     },
     {
       key: 'assignedSpoc',
       header: 'Assigned SPOC',
+      hideOnMobile: true,
     },
     {
       key: 'status',
@@ -57,15 +60,15 @@ export default function ReviewsPage() {
     <DashboardLayout>
       <div className="animate-fade-in">
         {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-foreground">Reviews & Approvals</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">Reviews & Approvals</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Track the review status of your submitted problem statements
           </p>
         </div>
 
         {/* Metric Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <MetricCard
             title="Pending Review"
             value={dashboardMetrics.pendingReview}
@@ -93,7 +96,7 @@ export default function ReviewsPage() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Table */}
           <div className="lg:col-span-2">
             <div className="mb-4">

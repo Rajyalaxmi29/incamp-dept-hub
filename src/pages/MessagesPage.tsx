@@ -54,14 +54,14 @@ export default function MessagesPage() {
     <DashboardLayout>
       <div className="animate-fade-in">
         {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-foreground">Messages / Alerts</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">Messages / Alerts</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Communication with Institution Admin regarding problem statements
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-220px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 min-h-[400px] lg:h-[calc(100vh-220px)]">
           {/* Thread List */}
           <div className="lg:col-span-1 bg-card rounded-xl border border-border overflow-hidden">
             <div className="p-4 border-b border-border">

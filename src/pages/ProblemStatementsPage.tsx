@@ -72,7 +72,7 @@ export default function ProblemStatementsPage() {
       key: 'title',
       header: 'PS Title',
       render: (ps: ProblemStatement) => (
-        <div className="max-w-xs">
+        <div className="min-w-[150px]">
           <p className="text-xs text-muted-foreground">{ps.id}</p>
           <p className="font-medium text-foreground truncate">{ps.title}</p>
         </div>
@@ -81,6 +81,7 @@ export default function ProblemStatementsPage() {
     {
       key: 'category',
       header: 'Category / Theme',
+      hideOnMobile: true,
       render: (ps: ProblemStatement) => (
         <div>
           <p className="font-medium text-foreground">{ps.category}</p>
@@ -96,10 +97,12 @@ export default function ProblemStatementsPage() {
     {
       key: 'lastUpdated',
       header: 'Last Updated',
+      hideOnMobile: true,
     },
     {
       key: 'facultyOwner',
       header: 'Faculty Owner',
+      hideOnMobile: true,
     },
     {
       key: 'actions',
@@ -138,16 +141,16 @@ export default function ProblemStatementsPage() {
     <DashboardLayout>
       <div className="animate-fade-in">
         {/* Page Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 sm:mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Problem Statements</h1>
-            <p className="text-sm text-muted-foreground mt-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">Problem Statements</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Create and manage problem statements before submission
             </p>
           </div>
           <Button
             onClick={() => setIsAddDialogOpen(true)}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground w-full sm:w-auto"
           >
             <Plus className="w-4 h-4 mr-2" />
             Add New PS
@@ -155,7 +158,7 @@ export default function ProblemStatementsPage() {
         </div>
 
         {/* Search */}
-        <div className="relative mb-6 max-w-md">
+        <div className="relative mb-4 sm:mb-6 w-full sm:max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             placeholder="Search by title or category..."

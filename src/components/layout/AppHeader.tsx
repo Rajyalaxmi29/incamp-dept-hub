@@ -1,4 +1,4 @@
-import { Bell, ChevronDown } from 'lucide-react';
+import { Bell, ChevronDown, Menu } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
@@ -12,7 +12,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { alerts } from '@/data/mockData';
 
-export function AppHeader() {
+interface AppHeaderProps {
+  onMenuClick: () => void;
+}
+
+export function AppHeader({ onMenuClick }: AppHeaderProps) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const unreadAlerts = alerts.filter(a => a.priority === 'high').length;
@@ -27,20 +31,28 @@ export function AppHeader() {
   };
 
   return (
-    <header className="fixed top-0 left-64 right-0 z-30 h-16 bg-white border-b border-border">
-      <div className="flex items-center justify-between h-full px-6">
-        {/* Department Info */}
-        <div>
-          <h2 className="text-sm font-semibold text-foreground">
-            {user?.department.name}
-          </h2>
-          <p className="text-xs text-muted-foreground">
-            {user?.department.institution}
-          </p>
+    <header className="fixed top-0 left-0 right-0 z-30 h-16 bg-white border-b border-border lg:left-64">
+      <div className="flex items-center justify-between h-full px-4 lg:px-6">
+        {/* Mobile menu button + Department Info */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onMenuClick}
+            className="p-2 rounded-lg hover:bg-secondary lg:hidden"
+          >
+            <Menu className="w-5 h-5 text-muted-foreground" />
+          </button>
+          <div className="hidden sm:block">
+            <h2 className="text-sm font-semibold text-foreground">
+              {user?.department.name}
+            </h2>
+            <p className="text-xs text-muted-foreground">
+              {user?.department.institution}
+            </p>
+          </div>
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Notifications */}
           <button 
             onClick={() => navigate('/messages')}
@@ -56,19 +68,19 @@ export function AppHeader() {
 
           {/* User Menu */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary transition-colors">
+            <DropdownMenuTrigger className="flex items-center gap-2 sm:gap-3 p-2 rounded-lg hover:bg-secondary transition-colors">
               <Avatar className="w-8 h-8">
                 <AvatarFallback className="bg-primary text-primary-foreground text-sm">
                   {user ? getInitials(user.name) : 'U'}
                 </AvatarFallback>
               </Avatar>
-              <div className="text-left hidden sm:block">
+              <div className="text-left hidden md:block">
                 <p className="text-sm font-medium text-foreground">{user?.name}</p>
                 <p className="text-xs text-muted-foreground">Department Admin</p>
               </div>
-              <ChevronDown className="w-4 h-4 text-muted-foreground" />
+              <ChevronDown className="w-4 h-4 text-muted-foreground hidden sm:block" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-56 bg-white">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => navigate('/profile')}>
