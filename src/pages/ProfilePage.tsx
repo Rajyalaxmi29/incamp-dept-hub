@@ -43,9 +43,9 @@ export default function ProfilePage() {
     <DashboardLayout>
       <div className="animate-fade-in max-w-2xl">
         {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-foreground">Profile</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">Profile</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Manage your account and department information
           </p>
         </div>
@@ -53,22 +53,22 @@ export default function ProfilePage() {
         {/* Profile Card */}
         <div className="bg-card rounded-xl border border-border overflow-hidden">
           {/* Header with Avatar */}
-          <div className="bg-primary/5 p-6 border-b border-border">
-            <div className="flex items-center gap-4">
-              <Avatar className="w-16 h-16">
-                <AvatarFallback className="bg-primary text-primary-foreground text-xl">
+          <div className="bg-primary/5 p-4 sm:p-6 border-b border-border">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <Avatar className="w-12 h-12 sm:w-16 sm:h-16">
+                <AvatarFallback className="bg-primary text-primary-foreground text-lg sm:text-xl">
                   {user ? getInitials(user.name) : 'U'}
                 </AvatarFallback>
               </Avatar>
               <div>
-                <h2 className="text-lg font-semibold text-foreground">{user?.name}</h2>
-                <p className="text-sm text-muted-foreground">Department Admin</p>
+                <h2 className="text-base sm:text-lg font-semibold text-foreground">{user?.name}</h2>
+                <p className="text-xs sm:text-sm text-muted-foreground">Department Admin</p>
               </div>
             </div>
           </div>
 
           {/* Profile Info */}
-          <div className="p-6 space-y-6">
+          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             {/* Personal Information */}
             <div>
               <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">

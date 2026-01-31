@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AppSidebar } from './AppSidebar';
 import { AppHeader } from './AppHeader';
@@ -10,6 +10,7 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const { isAuthenticated } = useAuth();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -17,10 +18,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <div className="min-h-screen bg-secondary/30">
-      <AppSidebar />
-      <AppHeader />
-      <main className="ml-64 pt-16 min-h-screen">
-        <div className="p-6">
+      <AppSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <AppHeader onMenuClick={() => setSidebarOpen(true)} />
+      <main className="pt-16 min-h-screen lg:ml-64">
+        <div className="p-4 sm:p-6">
           {children}
         </div>
       </main>

@@ -32,15 +32,16 @@ export default function DashboardPage() {
       key: 'id',
       header: 'PS ID & Title',
       render: (ps: typeof problemStatements[0]) => (
-        <div>
+        <div className="min-w-[150px]">
           <p className="text-xs text-muted-foreground">{ps.id}</p>
-          <p className="font-medium text-foreground">{ps.title}</p>
+          <p className="font-medium text-foreground truncate">{ps.title}</p>
         </div>
       ),
     },
     {
       key: 'category',
       header: 'Category / Track',
+      hideOnMobile: true,
       render: (ps: typeof problemStatements[0]) => (
         <div>
           <p className="font-medium text-foreground">{ps.category}</p>
@@ -56,10 +57,12 @@ export default function DashboardPage() {
     {
       key: 'lastUpdated',
       header: 'Last Updated',
+      hideOnMobile: true,
     },
     {
       key: 'assignedSpoc',
       header: 'Assigned SPOC',
+      hideOnMobile: true,
     },
     {
       key: 'actions',
@@ -71,8 +74,8 @@ export default function DashboardPage() {
           onClick={() => navigate('/problem-statements')}
           className="text-primary hover:text-primary/80"
         >
-          <Eye className="w-4 h-4 mr-1" />
-          View
+          <Eye className="w-4 h-4 sm:mr-1" />
+          <span className="hidden sm:inline">View</span>
         </Button>
       ),
     },
@@ -82,15 +85,15 @@ export default function DashboardPage() {
     <DashboardLayout>
       <div className="animate-fade-in">
         {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">Dashboard</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Overview of your department's problem statement activity
           </p>
         </div>
 
         {/* Metric Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <MetricCard
             title="Total Prepared"
             value={dashboardMetrics.totalPrepared}
@@ -129,15 +132,15 @@ export default function DashboardPage() {
         </div>
 
         {/* Progress Bar */}
-        <div className="bg-card rounded-xl border border-border p-6 mb-6">
-          <h3 className="text-sm font-semibold text-foreground mb-6">
+        <div className="bg-card rounded-xl border border-border p-4 sm:p-6 mb-4 sm:mb-6">
+          <h3 className="text-sm font-semibold text-foreground mb-4 sm:mb-6">
             Problem Statement Submission Cycle
           </h3>
           <ProgressSteps stages={submissionCycle.stages} />
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Recent Problem Statements Table */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-4">

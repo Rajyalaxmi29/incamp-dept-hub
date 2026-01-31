@@ -34,22 +34,22 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary/30 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-secondary/30 px-4 py-8">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="flex flex-col items-center mb-8">
-          <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary mb-4">
-            <GraduationCap className="w-8 h-8 text-primary-foreground" />
+        <div className="flex flex-col items-center mb-6 sm:mb-8">
+          <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary mb-3 sm:mb-4">
+            <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8 text-primary-foreground" />
           </div>
-          <h1 className="text-2xl font-bold text-primary">inCamp</h1>
-          <p className="text-sm text-muted-foreground mt-1">Department Admin Portal</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-primary">inCamp</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">Department Admin Portal</p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-card rounded-2xl shadow-card border border-border p-8">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-foreground">Welcome Back</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+        <div className="bg-card rounded-2xl shadow-card border border-border p-6 sm:p-8">
+          <div className="text-center mb-5 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-semibold text-foreground">Welcome Back</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Sign in to access your department dashboard
             </p>
           </div>

@@ -12,6 +12,7 @@ interface Column<T> {
   key: string;
   header: string;
   render?: (item: T) => ReactNode;
+  hideOnMobile?: boolean;
 }
 
 interface DataTableProps<T> {
@@ -23,33 +24,40 @@ interface DataTableProps<T> {
 export function DataTable<T>({ columns, data, keyExtractor }: DataTableProps<T>) {
   return (
     <div className="rounded-xl border border-border bg-card overflow-hidden">
-      <Table>
-        <TableHeader>
-          <TableRow className="bg-secondary/50 hover:bg-secondary/50">
-            {columns.map((column) => (
-              <TableHead
-                key={column.key}
-                className="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
-              >
-                {column.header}
-              </TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.map((item) => (
-            <TableRow key={keyExtractor(item)} className="hover:bg-secondary/30">
+      <div className="overflow-x-auto">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-secondary/50 hover:bg-secondary/50">
               {columns.map((column) => (
-                <TableCell key={`${keyExtractor(item)}-${column.key}`} className="py-3">
-                  {column.render
-                    ? column.render(item)
-                    : (item as any)[column.key]}
-                </TableCell>
+                <TableHead
+                  key={column.key}
+                  className={`text-xs font-semibold text-muted-foreground uppercase tracking-wider whitespace-nowrap ${
+                    column.hideOnMobile ? 'hidden md:table-cell' : ''
+                  }`}
+                >
+                  {column.header}
+                </TableHead>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {data.map((item) => (
+              <TableRow key={keyExtractor(item)} className="hover:bg-secondary/30">
+                {columns.map((column) => (
+                  <TableCell
+                    key={`${keyExtractor(item)}-${column.key}`}
+                    className={`py-3 ${column.hideOnMobile ? 'hidden md:table-cell' : ''}`}
+                  >
+                    {column.render
+                      ? column.render(item)
+                      : (item as any)[column.key]}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }

@@ -80,18 +80,18 @@ export default function SubmitPage() {
     <DashboardLayout>
       <div className="animate-fade-in">
         {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-foreground">Submit Problem Statements</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">Submit Problem Statements</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Submit your problem statements to the Institution for official review
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Left Column - Template & Upload */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Template Preview */}
-            <div className="bg-card rounded-xl border border-border p-6">
+            <div className="bg-card rounded-xl border border-border p-4 sm:p-6">
               <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
                 <FileText className="w-4 h-4" />
                 Submission Template (Preview)
@@ -113,7 +113,7 @@ export default function SubmitPage() {
             </div>
 
             {/* Upload Area */}
-            <div className="bg-card rounded-xl border border-border p-6">
+            <div className="bg-card rounded-xl border border-border p-4 sm:p-6">
               <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Upload className="w-4 h-4" />
                 Upload Supporting Documents
@@ -122,7 +122,7 @@ export default function SubmitPage() {
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
-                className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+                className={`border-2 border-dashed rounded-lg p-4 sm:p-8 text-center transition-colors ${
                   isDragOver
                     ? 'border-primary bg-primary/5'
                     : 'border-border hover:border-primary/50'
@@ -182,7 +182,7 @@ export default function SubmitPage() {
 
           {/* Right Column - Ready to Submit */}
           <div className="lg:col-span-1">
-            <div className="bg-card rounded-xl border border-border p-6">
+            <div className="bg-card rounded-xl border border-border p-4 sm:p-6">
               <h3 className="text-sm font-semibold text-foreground mb-4">
                 Ready to Submit ({readyToSubmit.length})
               </h3>
